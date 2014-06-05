@@ -36,7 +36,7 @@ public class FloorCeil {
 				if(Integer.parseInt(arr[middle-1])<line)
 				{
 					floor=Integer.parseInt(arr[middle-1]);
-					ceil=Integer.parseInt(arr[middle]);
+					ceil=Integer.parseInt(arr[middle	]);
 					break;
 				}
 				else
