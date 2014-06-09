@@ -29,23 +29,23 @@ public class LoopinaLinkedList {
 		while (current != null) {
 
 			//Using Hashing to find a loop in a singly linked List
-			/*if(hashNode.contains(current))
+			if(hashNode.contains(current))
 			{
 				System.out.println("List has a loop");
 
 				break;
 			}
-			hashNode.add(current);*/
+			hashNode.add(current);
 
 			//Using a boolean flag/visited flag
-			/*if(current.flag==false)
+			if(current.flag==false)
 				current.flag=true;
 			else
 			{
 				System.out.println("List has a loop");
 
 				break;
-			}*/
+			}
 			
 			
 			//Using two pointers ,fast and slow incrementing one by 1 and the other by 2
