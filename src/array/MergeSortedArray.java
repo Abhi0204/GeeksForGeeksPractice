@@ -15,12 +15,9 @@ public class MergeSortedArray {
 		int [] c=new int[A.length+B.length];
 		
 		
-		while(i<A.length)
+		while(i<A.length && j<B.length)
 		{
 		
-			if(i==A.length ||j==B.length)
-				break;
-			
 			if(A[i]>=B[j])
 			{
 				c[k]=B[j];
@@ -37,7 +34,8 @@ public class MergeSortedArray {
 			
 			
 		}
-		while(i<=A.length-1 || j<=B.length-1)
+
+		while(i+j<c.length)
 		{
 			if(i==A.length)
 			{

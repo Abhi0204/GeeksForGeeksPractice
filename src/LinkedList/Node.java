@@ -14,4 +14,10 @@ public class Node {
 		this.name=name;
 		this.data=data;
 	}
+	public Node(int data)
+	{
+		
+	
+		this.data=data;
+	}
 }

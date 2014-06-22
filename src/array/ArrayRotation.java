@@ -13,26 +13,35 @@ public class ArrayRotation {
 				new InputStreamReader(System.in));
 
 		int[] arr={1,2,3,4,5,6,7};
+		int p=0;
 		int k=Integer.parseInt(inp.readLine());
 
-		int[] newArray=new int[arr.length];
+		int[] newArray=new int[k];
 
-		int count=0;
-		for(int i=k;i<arr.length;i++)
-		{
-			newArray[count]=arr[i];
-			count++;
-		}
 
 		for(int j=0;j<k;j++)
 		{
-			newArray[count]=arr[j];
-			count++;
+			newArray[j]=arr[j];
+			
+		}
+		for(int i=0;i<arr.length;i++)
+		{
+			if(i+k>=arr.length)
+				break;
+			arr[i]=arr[i+k];
 		}
 
-		for(int j=0;j<newArray.length;j++)
+		for(int j=arr.length-k;j<arr.length;j++)
 		{
-			System.out.print(newArray[j]);
+			arr[j]=newArray[p];
+			p++;
+			          
+			
+		}
+
+		for(int j=0;j<arr.length;j++)
+		{
+			System.out.print(arr[j]);
 		}
 	}
 

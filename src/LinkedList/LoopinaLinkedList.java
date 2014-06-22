@@ -24,19 +24,27 @@ public class LoopinaLinkedList {
 
 	public static void listTraverse(Node node) {
 		Node current = node;
-		Node next=node;
 		HashSet<Node> hashNode=new HashSet<Node>();
+		Node prev=null;
 		while (current != null) {
 
 			//Using Hashing to find a loop in a singly linked List
 			if(hashNode.contains(current))
 			{
 				System.out.println("List has a loop");
-
+		
+                prev.next=null;
 				break;
 			}
 			hashNode.add(current);
-
+			prev=current;
+		
+			current=current.next;
+			
+			
+		}
+		
+/*
 			//Using a boolean flag/visited flag
 			if(current.flag==false)
 				current.flag=true;
@@ -69,6 +77,16 @@ public class LoopinaLinkedList {
 			
 			
 			
+		}*/
+	}
+	
+	public static void traverse(Node node)
+	{
+		Node curr=node;
+		while(curr!=null)
+		{
+			System.out.print(curr.name+"->");
+			curr=curr.next;
 		}
 	}
 	public static void main(String[] args) {
@@ -86,8 +104,11 @@ public class LoopinaLinkedList {
 		InsertatEnd(n2);
 		InsertatEnd(n3);
 		InsertatEnd(n4);
-		//InsertatEnd(n3);
+		InsertatEnd(n3);
+		
 		listTraverse(head);
+		
+		traverse(head);
 
 	}
 
