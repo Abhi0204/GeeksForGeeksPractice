@@ -2,16 +2,12 @@ package BinaryTree;
 
 public class countLeafNodes {
 
-	static int count=0;
-	public void countLeaf(Node root)
+
+	public int countLeaf(Node root)
 	{
 		if(root.leftChild==null && root.rightChild==null)
-		{
-			count++;
-			return;
-		}
-		countLeaf(root.leftChild);
-		countLeaf(root.rightChild);
+		return 1;
+		return countLeaf(root.leftChild)+countLeaf(root.rightChild);
 	}
 	
 	public int recurseCountLeaf(Node root)
@@ -36,7 +32,7 @@ public class countLeafNodes {
 		
 		countLeafNodes countleaf=new countLeafNodes();
 		countleaf.countLeaf(root);
-		System.out.println("Leaf Nodes are "+count);
+
 		
 		System.out.println("Count is "+countleaf.recurseCountLeaf(root));
 	}

@@ -10,7 +10,7 @@ public class NextGreaterElement {
 	{
 		for(int i=0;i<arr.length;i++)
 		{
-			if()
+			
 		}
 	}
 	public static void main(String[] args) throws IOException{

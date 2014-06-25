@@ -11,24 +11,22 @@ public class MooreAlgorithm {
 		int count=1;
 		int majority_index=0;
 		
-		for(int i=1;i<arr.length;i++)
+		for(int i=1;i<arr.length-1;i++)
 		{
-			
-			
 			if(arr[majority_index].equals(arr[i]))
 			{
 				count++;
-				majority_index=i;
+				//majority_index=i;
 			}
-			else
+			else {
 				count--;
-			
-			if(count==0)
-			{
-				majority_index=i;
-				count=1;
+				if(count==0)
+				{
+					majority_index=i+1;
+					i++;
+					count=1;
+				}
 			}
-			
 			
 		}
 		return majority_index;

@@ -22,8 +22,17 @@ public class ReverseString {
 		return result;
 
 	}
+	
+	public static void reverseRecurseString(String str,int index)
+	{
+		if(index==str.length())
+			return;
+		reverseRecurseString(str,index+1);
+		System.out.print(str.charAt(index));
+	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		// TODO Auto-generated method stub
 		String str = printString("I am varun");
 
@@ -32,6 +41,8 @@ public class ReverseString {
 		for (int i = 0; i < arr.length; i++) 
 			System.out.print(printString(arr[i] + " "));
 		
+		System.out.println("\n");
+		reverseRecurseString("I am Varun",0);
 
 	}
 
