@@ -1,9 +1,9 @@
-package LinkedList;
+package Stacks;
 
 public class Node {
 
-	public Node next;
-	public int data;
+	Node next;
+	int data;
 	String name;
 	boolean flag=false;
 	

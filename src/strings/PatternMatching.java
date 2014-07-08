@@ -10,7 +10,6 @@ public class PatternMatching {
 		boolean flag = false;
        int k=0;
 		int index=0;
-		int count=0;
 		while(index<str.length())
 		{
 			
@@ -23,14 +22,12 @@ public class PatternMatching {
 			{
 				index=index-(k-1);
 				k=0;
-				
 			}
 			if(k==pattern.length())
 			{
 				flag=true;
 				System.out.println("Pattern found at index "+ (index-pattern.length()));
 				index=index-(k-1);
-
 				k=0;
 			}
 			
