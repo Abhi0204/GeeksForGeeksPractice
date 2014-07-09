@@ -18,6 +18,7 @@ public class countLeafNodes {
 			return 1;
 		return (recurseCountLeaf(root.leftChild)+recurseCountLeaf(root.rightChild));
 	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Node root=new Node(1);

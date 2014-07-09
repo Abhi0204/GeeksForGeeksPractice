@@ -29,12 +29,48 @@ public static Node root=null;
 		System.out.print(node.data+" ");
 		inorder(node.rightChild);
 	}
-	
-	public Node deleteNode(Node root,int key)
+	public Node findMin(Node root)
 	{
 		if(root==null)
 			return null;
-		if(root.data==key)
+		
+		while(root.leftChild!=null)
+			root=root.leftChild;
+				return root;
+	}
+	
+	public Node FindInorderSuccessor(Node rootNode,Node node)
+	{
+		if(rootNode==null)
+			return null;
+		
+		if(node.rightChild!=null)
+			return findMin(node.rightChild);
+
+		Node succ=null;
+		while(rootNode!=null)
+		{
+			if(node.data<rootNode.data)
+			{
+				succ=rootNode;
+				rootNode=rootNode.leftChild;
+			}
+			else if(node.data>rootNode.data)
+				rootNode=rootNode.rightChild;
+			else if(node.data==rootNode.data)
+				break;
+		}
+		
+		return succ;
+	}
+	
+	
+	public Node deleteNode(Node root,Node node)
+	{
+		Node succ=null;
+		if(root==null)
+			return null;
+		if(root.data==node.data)
 		{
 			if(root.leftChild==null && root.rightChild==null)
 			
@@ -47,11 +83,21 @@ public static Node root=null;
 				
 				return root.leftChild;
 			
+			else
+			{
+				succ= FindInorderSuccessor(root,node);
+				succ.leftChild=root.leftChild;
+				if(succ.data!=root.rightChild.data)
+					succ.rightChild=root.rightChild;
+				root.rightChild=deleteNode(root.rightChild,succ);
+				    				
+			}
+			
 		}
 		
-	    root.leftChild=deleteNode(root.leftChild, key);
+	    root.leftChild=deleteNode(root.leftChild,node);
 		
-		root.rightChild=deleteNode(root.rightChild, key);
+		root.rightChild=deleteNode(root.rightChild,node);
 		
 		return root;
 	}
@@ -67,6 +113,9 @@ public static Node root=null;
 		Node seventh=new Node(110);
 		Node eight=new Node(50);
 		Node ninth=new Node(40);
+		Node tenth=new Node(55);
+		Node eleven=new Node(58);
+		Node twel=new Node(54);
 		
 		Deletion insert=new Deletion();
 		
@@ -80,11 +129,17 @@ public static Node root=null;
 		insert.insertBSt(root,seventh);
 		insert.insertBSt(root,eight);
 		insert.insertBSt(root,ninth);
+		insert.insertBSt(root,tenth);
+		insert.insertBSt(root,eleven);
+		insert.insertBSt(root,twel);
+
 		insert.inorder(root);
 		
 		System.out.println("\n");
-		insert.deleteNode(root,50);
+		
+		insert.deleteNode(root,eight);
 		insert.inorder(root);
+		
 
 	}
 

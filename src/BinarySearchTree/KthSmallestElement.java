@@ -1,62 +1,42 @@
 package BinarySearchTree;
 
-public class InorderSuccessor {
+
+public class KthSmallestElement {
 
 	public static Node root=null;
-	
+	public static int count=0;
 	public Node insertBSt(Node root,Node node)
 	{
 		if(root==null)
 		{
 			node.leftChild=null;
-		    node.rightChild=null;
-            return node;
+			node.rightChild=null;
+			return node;
 		}
-		
+
 		if(node.data>root.data)
 			root.rightChild=insertBSt(root.rightChild,node);
 		else if(node.data<root.data)
 			root.leftChild=insertBSt(root.leftChild,node);
-			
-            return root;
-		
+
+		return root;
+
 	}
 	
-	public Node findMin(Node root)
+	
+	public void getKthSmallest(Node root,int k)
 	{
 		if(root==null)
-			return null;
-		
-		while(root.leftChild!=null)
-			root=root.leftChild;
-				return root;
-	}
-	
-	public Node FindInorderSuccessor(Node rootNode,Node node)
-	{
-		if(rootNode==null)
-			return null;
-		
-		if(node.rightChild!=null)
-			return findMin(node.rightChild);
-
-		Node succ=null;
-		while(rootNode!=null)
+			return;
+		getKthSmallest(root.leftChild,k);
+		if(count==k)
+		System.out.println(root.data);
+		else
 		{
-			if(node.data<rootNode.data)
-			{
-				succ=rootNode;
-				rootNode=rootNode.leftChild;
-			}
-			else if(node.data>rootNode.data)
-				rootNode=rootNode.rightChild;
-			else if(node.data==rootNode.data)
-				break;
+			count++;
+		getKthSmallest(root.rightChild, k);
 		}
-		
-		return succ;
 	}
-	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -69,12 +49,12 @@ public class InorderSuccessor {
 		Node seventh=new Node(110);
 		Node eight=new Node(50);
 		Node ninth=new Node(40);
-		Node tenth=new Node(90);
-		Node eleven=new Node(88);
-		
-		InorderSuccessor insert=new InorderSuccessor();
+		Node tenth=new Node(55);
+		Node eleven=new Node(58);
+		Node twel=new Node(54);
 		
 		root=first;
+		KthSmallestElement insert=new KthSmallestElement();
 		insert.insertBSt(root,second);
 
 		insert.insertBSt(root,third);
@@ -86,9 +66,12 @@ public class InorderSuccessor {
 		insert.insertBSt(root,ninth);
 		insert.insertBSt(root,tenth);
 		insert.insertBSt(root,eleven);
+		insert.insertBSt(root,twel);
 		
-		System.out.println(insert.FindInorderSuccessor(root,eleven).data);		
-		insert.findMin(second);
+		
+		insert.getKthSmallest(root, 1);
+		
+
 	}
 
 }
