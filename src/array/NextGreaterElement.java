@@ -1,30 +1,54 @@
 package array;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.Stack;
 
 public class NextGreaterElement {
 
-	public void returnArray(String [] arr)
+	Stack<Integer> mystack=new Stack<Integer>();
+	public void returnArray(int [] arr)
 	{
-		for(int i=0;i<arr.length;i++)
+		mystack.push(arr[0]);
+		for(int i=1;i<arr.length;i++)
 		{
-			
+			int number=mystack.pop();
+			if(number>arr[i])
+			{
+				mystack.push(number);
+				mystack.push(arr[i]);
+			}
+			else if(number<arr[i])
+			{
+				while(number<arr[i])
+				{
+					System.out.println(number+"--->"+arr[i]);
+
+
+					if(!mystack.isEmpty()&& mystack.peek()<arr[i])
+						number=mystack.pop();	
+					else
+						break;
+				}
+				mystack.push(arr[i]);
+
+			}
+
 		}
+
+		while(!mystack.isEmpty())
+		System.out.println(mystack.pop()+"--->"+-1);
 	}
 	public static void main(String[] args) throws IOException{
 		// TODO Auto-generated method stub
 
-		BufferedReader inp=new BufferedReader(new InputStreamReader(System.in));
-		String line=inp.readLine();
-		
-		String[] arr=line.split(" ");
-		
-		int[] arr1=new int[arr.length];
-	
-		
-		
+
+
+		int[] arr={13,7,6,12};
+		NextGreaterElement nex=new NextGreaterElement();
+		nex.returnArray(arr);
+
+
+
 	}
 
 }

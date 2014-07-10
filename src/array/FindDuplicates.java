@@ -12,13 +12,16 @@ public class FindDuplicates {
 	     arr[Math.abs(arr[i])] = -arr[Math.abs(arr[i])];
 	      
 	    else
+	    {
 	      System.out.println(Math.abs(arr[i]));
+	      arr[Math.abs(arr[i])]=-arr[Math.abs(arr[i])];
+	    }
 	  }
 	}
 	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {1, 2, 3, 1, 3, 6, 6};
+		int arr[] = {2, 2, 1, 3, 3, 1, 6};
 		  int arr_size = arr.length;
 		  printRepeating(arr, arr_size);
 		 

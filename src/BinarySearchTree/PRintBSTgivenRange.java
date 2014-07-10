@@ -1,8 +1,6 @@
 package BinarySearchTree;
 
-
-public class KthSmallestElement {
-
+public class PRintBSTgivenRange {
 	public static Node root=null;
 	public static int count=0;
 	public Node insertBSt(Node root,Node node)
@@ -24,18 +22,17 @@ public class KthSmallestElement {
 	}
 	
 	
-	public void getKthSmallest(Node root,int k)
+	public void getRange(Node root,int a,int b)
 	{
+		if (root==null)
+		return ;
+		if(root.data>=a && root.data<=b)
+			System.out.println(root.data);
 		
-		if(root==null)
-			return;
-		getKthSmallest(root.leftChild,k);
-		count++;
-		if(count==k)
-		System.out.println(root.data);
-			
-		getKthSmallest(root.rightChild, k);
-		
+		if(root.data>=a)
+			getRange(root.leftChild, a, b);
+		if(root.data<=b)
+		getRange(root.rightChild, a, b);
 	}
 	
 	public static void main(String[] args) {
@@ -54,9 +51,8 @@ public class KthSmallestElement {
 		Node twel=new Node(54);
 		
 		root=first;
-		KthSmallestElement insert=new KthSmallestElement();
+		PRintBSTgivenRange insert=new PRintBSTgivenRange();
 		insert.insertBSt(root,second);
-
 		insert.insertBSt(root,third);
 		insert.insertBSt(root,fourth);
 		insert.insertBSt(root,fifth);
@@ -69,9 +65,7 @@ public class KthSmallestElement {
 		insert.insertBSt(root,twel);
 		
 		
-		insert.getKthSmallest(root,4);
-		
-
+		insert.getRange(root,95,120);
 	}
 
 }
