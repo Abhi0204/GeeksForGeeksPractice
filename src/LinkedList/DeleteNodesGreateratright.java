@@ -53,11 +53,14 @@ public class DeleteNodesGreateratright {
 
 		while (current != null) {
 			Node temp = current.next;
-			if (current.data > max) {
+			if (current.data > max) 
+			{
 				max = current.data;
 				prev = current;
-			} else {
-				
+			} 
+			else
+			{
+
 				prev.next = temp;
 				current = null;
 
@@ -67,18 +70,35 @@ public class DeleteNodesGreateratright {
 		}
 	}
 
+	
+	public static Node recurseFindGreater(Node node)
+	{
+		if(node.next==null)
+			return node;
+		Node n=recurseFindGreater(node.next);
+		if(n.data>node.data)
+		{
+			node.data=n.data;
+			node.next=n.next;
+			n=null;
+		}
+		else
+			node.next=n;
+		return node;
+		
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Node n = new Node(12);
+		Node n = new Node(3);
 
-		Node n1 = new Node(15);
-		Node n2 = new Node(10);
+		Node n1 = new Node(14);
+		Node n2 = new Node(21);
 
-		Node n3 = new Node(11);
-		Node n4 = new Node(5);
-		Node n5 = new Node(6);
-		Node n6 = new Node(2);
-		Node n7 = new Node(3);
+		Node n3 = new Node(20);
+		Node n4 = new Node(19);
+		Node n5 = new Node(18);
+		Node n6 = new Node(17);
+		Node n7 = new Node(2);
 		InsertatEnd(n);
 
 		InsertatEnd(n1);
@@ -98,12 +118,18 @@ public class DeleteNodesGreateratright {
 
 		System.out.println("\n");
 		listTraverse(head);
-		
+
 		reverseList(head);
 		System.out.println("\n");
 		listTraverse(head);
 		
+		System.out.println("\n");
+
 		
+		System.out.println("*******************");
+		listTraverse(recurseFindGreater(head));
+
+
 	}
 
 }

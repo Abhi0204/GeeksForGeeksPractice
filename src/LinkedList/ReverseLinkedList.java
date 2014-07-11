@@ -3,6 +3,7 @@ package LinkedList;
 public class ReverseLinkedList  {
 
 	static Node head;
+	static Node head2;
 	public static void InsertatEnd(Node node) {
 		Node current = null;
 		if (head == null)
@@ -36,7 +37,17 @@ public class ReverseLinkedList  {
 		
 		head=prev;
 	}
-
+	public static Node recursereverseList (Node node)
+	{
+		
+		if(node.next==null)
+			return node;
+		Node n=recursereverseList(node.next);
+		node.next.next=node;
+		node.next=null;		
+		return n;
+	}
+	
 
 	public static void listTraverse(Node node) {
 		Node current = node;
@@ -64,12 +75,14 @@ public class ReverseLinkedList  {
 		InsertatEnd(n3);
 		InsertatEnd(n4);
 		
-		listTraverse(head);
+	//	listTraverse(head);
 		
 		
 		System.out.println("\n");
-		reverseList(head);
-		listTraverse(head);
+	//	recursereverseList(head);
+		
+		
+		listTraverse(recursereverseList(head));
 
 		
 	}

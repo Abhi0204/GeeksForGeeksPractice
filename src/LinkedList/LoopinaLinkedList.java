@@ -106,7 +106,7 @@ public class LoopinaLinkedList {
 		InsertatEnd(n4);
 		InsertatEnd(n3);
 		
-		listTraverse(head);
+	    listTraverse(head);
 		
 		traverse(head);
 
