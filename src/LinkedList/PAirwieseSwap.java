@@ -21,8 +21,8 @@ public class PAirwieseSwap {
 
 	}
 
-	public static void pairWiseSwap(Node node) {
-	
+	public static Node pairWiseSwap(Node node) {
+	/*
 		 head=node.next;
 		Node current=node.next;
 		Node prev=node;
@@ -43,7 +43,36 @@ public class PAirwieseSwap {
 			prev.next=temp.next;
 			prev=temp;
 			current=temp.next;
+		}*/
+		
+		
+		if(node==null)
+			return node;
+		Node newHead=null;
+		Node prev=null;
+		Node temp=null;
+		Node current=node;
+		Node next=null;
+		while(current!=null)
+		{
+			
+			temp=current.next;
+			if(prev==null)
+				newHead=temp;
+			
+			next=temp.next;
+			current.next=next;
+			
+			if(prev!=null)
+				prev.next=temp;
+			
+				temp.next=current;
+				prev=current;
+				current=prev.next;
+			
 		}
+		
+		return newHead;
 
 	}
 	
@@ -98,8 +127,8 @@ public class PAirwieseSwap {
 		traverseList(head);
 		System.out.println("\n");
 
-		pairWiseSwap(head);
-		traverseList(head);
+		//pairWiseSwap(head);
+		traverseList(pairWiseSwap(head));
 
 	}
 

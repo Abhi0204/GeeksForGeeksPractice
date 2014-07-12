@@ -6,6 +6,7 @@ public class Node {
 	public int data;
 	String name;
 	boolean flag=false;
+	public Node child;
 	
 	
 	public Node(int data,String name)

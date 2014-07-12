@@ -20,28 +20,12 @@ public class ReverseKnodes {
 		}
 
 	}
-	public static void kreverse(Node node,int k)
+	public static Node kreverse(Node node,int k)
 	{
-		Node current=node;
-		int count=0;
-		Node prev=null;
-		Node headNode=null;
-		boolean flag=false;
-		boolean flag1=false;
-		Node newNode=null;
-		Node myNode=null;
-		while(current!=null)
-		{
-			
-			Node temp=current.next;
-			current.next=prev;
-			prev=current;
-			current=temp;
-			
-			
-		}
+		if(node.next==null)
+			return node;
 		
-		head=prev;
+		
 		
 	}
 

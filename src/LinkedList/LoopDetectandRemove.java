@@ -38,7 +38,7 @@ public class LoopDetectandRemove {
 		}
 	}
 	
-	//Floyd Warshall Cycle Detecttion and Removal
+	//Floyd Warshall Cycle Detection and Removal
 	public void findALoop(Node node)
 	{
 		Node slow_pointer=node;
