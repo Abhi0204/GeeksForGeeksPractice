@@ -3,23 +3,31 @@ package BinaryTree;
 public class MinimumNode {
 
 	
-	public int findMinimum(Node node,int min)
+	public int findMinimum(Node root)
 	{
-		if(node.leftChild==null && node.rightChild==null && min<node.data)
-			return min;
-		else if(node.leftChild==null && node.rightChild==null && min>node.data)
-			return node.data;
+		if(root==null)
+			return Integer.MAX_VALUE;
+		if(root.leftChild==null && root.rightChild==null)
+			return root.data;
 		
-		if(min>node.data)
-			min=node.data;
+		int leftChild=findMinimum(root.leftChild);
+		int rightChild=findMinimum(root.rightChild);
 		
-		int left=findMinimum(node.leftChild, min);
-		int right=findMinimum(node.rightChild,min);
+		return Math.min(root.data ,Math.min(leftChild, rightChild));
+	}
+	
+	public int findMaximum(Node root)
+	{
+		if(root==null)
+			return 0;
+		if(root.leftChild==null && root.rightChild==null)
+			return root.data;
 		
-		if(left>right)
-			return right;
-		else
-			return left;
+		int leftChild=findMaximum(root.leftChild);
+		int rightChild=findMaximum(root.rightChild);
+		
+		return Math.max(root.data ,Math.max(leftChild, rightChild));
+		
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -35,7 +43,9 @@ public class MinimumNode {
 		
 		
 		MinimumNode min=new MinimumNode();
-		System.out.println(min.findMinimum(root,root.data));
+		System.out.println(min.findMaximum(root));
+		System.out.println("\n");
+		System.out.println(min.findMinimum(root));
 	}
 
 }

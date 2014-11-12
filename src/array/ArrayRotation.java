@@ -6,6 +6,34 @@ import java.io.InputStreamReader;
 
 public class ArrayRotation {
 
+	
+	public  static int[] rotateArray(int[] arr,int k)
+	{
+		int[] temp=new int[k];
+		for(int i=0;i<k;i++)
+		{
+			temp[i]=arr[i];
+			
+		}
+		
+		int j=0;
+		int n=k;
+		System.out.println(n);
+		while(n<arr.length)
+		{
+		arr[j]=arr[n];
+		j++;
+		n++;
+		}
+		int p=0;
+		for(int i=j;i<arr.length;i++)
+		{
+			arr[i]=temp[p];
+			p++;
+		}
+		
+		return arr;
+	}
 	public static void main(String [] args) throws NumberFormatException, IOException
 	{
 
@@ -13,35 +41,12 @@ public class ArrayRotation {
 				new InputStreamReader(System.in));
 
 		int[] arr={1,2,3,4,5,6,7};
-		int p=0;
-		int k=Integer.parseInt(inp.readLine());
-
-		int[] newArray=new int[k];
-
-
-		for(int j=0;j<k;j++)
+		
+         int[] arr1=rotateArray(arr,2);
+		
+		for(int j=0;j<arr1.length;j++)
 		{
-			newArray[j]=arr[j];
-			
-		}
-		for(int i=0;i<arr.length;i++)
-		{
-			if(i+k>=arr.length)
-				break;
-			arr[i]=arr[i+k];
-		}
-
-		for(int j=arr.length-k;j<arr.length;j++)
-		{
-			arr[j]=newArray[p];
-			p++;
-			          
-			
-		}
-
-		for(int j=0;j<arr.length;j++)
-		{
-			System.out.print(arr[j]);
+			System.out.print(arr1[j]);
 		}
 	}
 

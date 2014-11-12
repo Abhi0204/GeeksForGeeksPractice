@@ -6,7 +6,7 @@ public class PatternMatching {
 
 	public static void findPattern(String str, String pattern) {
 
-		int j = 0;
+	
 		boolean flag = false;
        int k=0;
 		int index=0;

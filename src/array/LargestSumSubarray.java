@@ -8,25 +8,35 @@ public class LargestSumSubarray {
 
 	int maxno=0;
 	int sum=0;
-	int max;
-
+	int min=Integer.MIN_VALUE;
+	int count=0;
 	public int getSumMax(String[] arr)
 	{
 		for(int i=0;i<arr.length;i++)
 		{
+			if(Integer.parseInt(arr[i])<0)
+			{
+				if(min<Integer.parseInt(arr[i]))
+					min=Integer.parseInt(arr[i]);
+				count++;
+				
+			}
+				
 			int no=Integer.parseInt(arr[i]);
             
 			sum=sum+no;
 			if(sum<0)
 				sum=0;
 			
-			else if(sum>=maxno)
+			if(sum>=maxno)
 				maxno=sum;
 		
 			
 			
 		}
 
+		if(count==arr.length)
+			return  min;
 		return maxno;
 	}
 	public static void main(String[] args) throws IOException {

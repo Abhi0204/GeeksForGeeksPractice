@@ -34,79 +34,36 @@ public class CheckBTisaBST {
 		inorder(node.rightChild);
 	}
 
-	public boolean checkBst(Node root)
+	
+	public boolean isThisABST(Node root,int[] prev)
+	{
+	if (root==null)
+		return true;
+	
+	isThisABST(root.leftChild, prev);
+	if(prev[0]<root.data)
+	{
+		prev[0]=root.data;
+		return 	isThisABST(root.rightChild, prev);
+
+	}
+	
+	return false;
+
+	
+	
+	}
+	
+	public void checkBST(Node root,int[] index,int[] arr)
+
 	{
 		if(root==null)
-			return false;
-		myqueue.add(root);
-		System.out.println("Level Order Traversal");
-
-		while(myqueue.isEmpty()==false)
-		{
+			return;
+		checkBST(root.leftChild, index, arr);
+		arr[index[0]]=root.data;
+		index[0]=index[0]+1;
+		checkBST(root.rightChild, index, arr);
 		
-			System.out.print(myqueue.peek().data+ " ");
-			if(myqueue.peek().leftChild!=null && myqueue.peek().rightChild!=null)
-			{
-				
-				if(myqueue.peek().leftChild.data<myqueue.peek().data && myqueue.peek().rightChild.data>myqueue.peek().data)
-				{
-					
-					myqueue.add(myqueue.peek().leftChild);
-					myqueue.add(myqueue.peek().rightChild);
-					myqueue.poll();
-
-				}
-				else 
-					return false;
-			}
-			else if(myqueue.peek().leftChild==null && myqueue.peek().rightChild!=null)
-			{
-				if(myqueue.peek().rightChild.data>myqueue.peek().data)
-				{
-					myqueue.add(myqueue.peek().rightChild);
-					myqueue.poll();
-
-				}
-				else
-					return false;
-			}
-			else if(myqueue.peek().leftChild!=null && myqueue.peek().rightChild==null)
-			{
-				if(myqueue.peek().leftChild.data<myqueue.peek().data)
-				{
-					myqueue.add(myqueue.peek().leftChild);
-					myqueue.poll();
-
-				}
-				else
-					return false;
-			}
-			
-			else if(myqueue.peek().leftChild==null && myqueue.peek().rightChild==null)
-				myqueue.poll();
-			
-		}
-		
-		System.out.println("\n");
-		return true;
-
-		}
-	
-	public boolean isThisABST(Node mynode)
-	{
-	if (mynode==null)
-		return true;
-
-	if (mynode.leftChild!=null && mynode.leftChild.data> mynode.data)
-	return false;
-
-	if (mynode.rightChild!=null && mynode.rightChild.data <= mynode.data)
-	return false;
-
-	return (isThisABST(mynode.leftChild) && isThisABST(mynode.rightChild));
-	//return true;
-
-	//return false;
 	}
 		public static void main(String[] args) {
 			// TODO Auto-generated method stub
@@ -126,8 +83,9 @@ public class CheckBTisaBST {
 
 			
 			Node root2=new Node(100);
-			root2.leftChild=new Node(111);
-			root2.rightChild=new Node(90);
+			root2.leftChild=new Node(90);
+			root2.rightChild=new Node(111);
+			root2.leftChild.leftChild=new Node(186);
 			CheckBTisaBST insert=new CheckBTisaBST();
 
 			root=first;
@@ -148,8 +106,16 @@ public class CheckBTisaBST {
 			insert.inorder(root);
 			
 			System.out.println("\n");
-
-			System.out.println(insert.isThisABST(root));
+int[] prev=new int[1];
+prev[0]=Integer.MIN_VALUE;
+			System.out.println(insert.isThisABST(root2,prev));
+			/*int[] arr=new int[12];
+			int[] index=new int[1];
+			insert.checkBST(root, index, arr);
+			
+			for(int i:arr)
+				System.out.println(i);*/
+			
 
 		}
 

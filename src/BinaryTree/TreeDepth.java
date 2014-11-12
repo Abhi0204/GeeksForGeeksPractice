@@ -17,6 +17,17 @@ public class TreeDepth {
 				return rightDepth+1;
 		}
 	}
+	
+	public int findhieghtOfaTree(Node root)
+	{
+	if(root==null)
+	return 0;
+
+	return 1 +Math.max(findhieghtOfaTree(root.leftChild),findhieghtOfaTree(root.rightChild));
+
+
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -26,8 +37,12 @@ public class TreeDepth {
 		root.leftChild.rightChild=new Node(4);
 		root.rightChild=new Node(5);
 		root.rightChild.leftChild=new Node(6);
+		root.rightChild.leftChild.rightChild=new Node(9);
+		root.rightChild.leftChild.leftChild=new Node(7);
+		root.rightChild.rightChild=new Node(8);
 		
 		TreeDepth firstTree=new TreeDepth();
+		System.out.println(firstTree.findhieghtOfaTree(root));
 		System.out.println(firstTree.getTreeDepth(root));
 	}
 

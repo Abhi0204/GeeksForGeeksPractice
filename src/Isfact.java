@@ -1,9 +1,10 @@
+import java.io.File;
+
 public class Isfact {
 
 	static int number = 1;
 
 	public static boolean isfact(int x, int y) {
-		
 
 		if(x==1 && y==1)
 			return true;

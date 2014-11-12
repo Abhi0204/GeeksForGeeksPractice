@@ -12,10 +12,10 @@ public class SearchRotatedArray {
 
 		while (low <= high) {
 			middle = (low + high) / 2;
-			if (arr[middle] < arr[middle - 1]) 
-				return middle - 1;
-			else if (arr[middle] > arr[middle + 1])
+			if (arr[middle] > arr[middle + 1])
 				return middle;
+			else if(arr[middle]<arr[middle-1])
+				return middle-1;
 			else if (arr[low] > arr[middle]) 
 				high = middle - 1;
 			 else if (arr[low] < arr[middle])

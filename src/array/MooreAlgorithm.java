@@ -16,16 +16,14 @@ public class MooreAlgorithm {
 			if(arr[majority_index].equals(arr[i]))
 			{
 				count++;
-				//majority_index=i;
 			}
 			else {
 				count--;
-				if(count==0)
-				{
-					majority_index=i+1;
-					i++;
-					count=1;
-				}
+			}
+			if(count==0)
+			{
+				majority_index=i+1;
+				count=1;
 			}
 			
 		}

@@ -3,6 +3,7 @@ package BinarySearchTree;
 public class PRintBSTgivenRange {
 	public static Node root=null;
 	public static int count=0;
+	
 	public Node insertBSt(Node root,Node node)
 	{
 		if(root==null)
@@ -24,15 +25,16 @@ public class PRintBSTgivenRange {
 	
 	public void getRange(Node root,int a,int b)
 	{
-		if (root==null)
-		return ;
+		if(root==null)
+			return;
+		
 		if(root.data>=a && root.data<=b)
 			System.out.println(root.data);
-		
-		if(root.data>=a)
+		if(root.data>a)
 			getRange(root.leftChild, a, b);
-		if(root.data<=b)
-		getRange(root.rightChild, a, b);
+		if(root.data<b)
+			getRange(root.rightChild, a, b);
+			
 	}
 	
 	public static void main(String[] args) {

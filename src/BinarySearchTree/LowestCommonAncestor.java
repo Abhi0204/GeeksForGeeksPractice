@@ -5,19 +5,13 @@ public class LowestCommonAncestor {
 	public Node insertBSt(Node root,Node node)
 	{
 		if(root==null)
-		{
-			node.leftChild=null;
-			node.rightChild=null;
 			return node;
-		}
-
-		if(node.data>root.data)
-			root.rightChild=insertBSt(root.rightChild,node);
-		else if(node.data<root.data)
-			root.leftChild=insertBSt(root.leftChild,node);
-
+		if(node.data<root.data)
+			root.leftChild=insertBSt(root.leftChild, node);
+		else
+			root.rightChild=insertBSt(root.rightChild, node);
+		
 		return root;
-
 	}
 	public void inorder(Node node)
 	{
@@ -44,10 +38,24 @@ public class LowestCommonAncestor {
 		return node;
 	}
 	
+	
+	public Node LCA(Node root,Node a,Node b)
+	{
+		if(root==null)
+			return null;
+		if(root.data>a.data && root.data>b.data)
+			LCA(root.leftChild,a,b);
+		if(root.data<a.data && root.data<b.data)
+			LCA(root.rightChild,a,b);
+		
+		return root;
+	}
+	
 	public Node RecursiveFindLLCS(Node node,Node a,Node b)
 	{
 		if(node==null)
 			return null;
+		
 	      if(a.data<node.data && b.data<node.data)
 	    	 return RecursiveFindLLCS(node.leftChild,a ,b);
 	      else if(a.data>node.data && b.data>node.data)
@@ -89,7 +97,10 @@ public class LowestCommonAncestor {
 		System.out.println(insert.findLowestCommonAncestor(root, eleven, third).data);
 		
 		System.out.println("\n");
-		System.out.println(insert.RecursiveFindLLCS(root, fourth, ninth).data);
+		System.out.println(insert.RecursiveFindLLCS(root,eleven, third).data);
+		System.out.println("\n"+"");
+		Node temp=insert.LCA(root, eleven,third);
+		System.out.println(temp.data);
 
 	}
 

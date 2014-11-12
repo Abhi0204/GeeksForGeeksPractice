@@ -98,8 +98,8 @@ public class MergeatAlternatePosition {
 				mergeSecond.InsertatEnd(c);
 				mergeSecond.InsertatEnd(d);
 				mergeSecond.InsertatEnd(e);
-				mergeSecond.InsertatEnd(f);
-				mergeSecond.InsertatEnd(g);
+				//mergeSecond.InsertatEnd(f);
+				//mergeSecond.InsertatEnd(g);
 				
 				merge.traverseList(merge.getHead());
 				System.out.println("\n");

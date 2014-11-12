@@ -12,15 +12,20 @@ public class DeleteTree {
 		System.out.print(root.data+" ");
 	}
 	
-	public void deleteTree(Node root)
+	
+	public Node deleteTree(Node root)
 	{
-		if(root==null)	
-			return;
-		deleteTree(root.leftChild);
-		deleteTree(root.rightChild);
-		System.out.println("deleting node "+root.data);
-		root=null;
+	if(root==null)
+	return null;
+
+    	root.leftChild=deleteTree(root.leftChild);
+ 	    root.rightChild=deleteTree(root.rightChild);
+     System.out.println(root.data);
+	root=null;
+	
+	return null;
 	}
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -41,6 +46,7 @@ public class DeleteTree {
 		System.out.println("\n");
 		System.out.println("Tree Deleted");
 		del.postOrderTraversal(root);
+	
 	}
 
 }

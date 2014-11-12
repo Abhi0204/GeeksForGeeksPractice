@@ -31,7 +31,7 @@ public class BalancedParanthesis {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String str="[(])";
+		String str="[{}()]";
 		BalancedParanthesis balanced=new BalancedParanthesis();
 		System.out.println(balanced.checkBalanced(str));
 	}

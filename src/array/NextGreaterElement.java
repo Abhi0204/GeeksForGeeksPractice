@@ -43,7 +43,7 @@ public class NextGreaterElement {
 
 
 
-		int[] arr={13,7,6,12};
+		int[] arr={7,5,8,12};
 		NextGreaterElement nex=new NextGreaterElement();
 		nex.returnArray(arr);
 

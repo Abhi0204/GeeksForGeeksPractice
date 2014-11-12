@@ -7,6 +7,9 @@ public class Node {
 	String name;
 	boolean flag=false;
 	public Node child;
+	public Node arbit; 
+	
+	public Node prev;
 	
 	
 	public Node(int data,String name)

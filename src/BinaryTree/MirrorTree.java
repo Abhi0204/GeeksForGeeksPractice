@@ -21,6 +21,19 @@ public class MirrorTree {
 		mirror(node.leftChild);
 		mirror(node.rightChild);
 	}
+	
+	public void MirrorTreeConvert(Node root)
+	{
+	if(root==null)
+	return;
+	Node temp=root.leftChild;
+	root.leftChild=root.rightChild;
+	root.rightChild=temp;
+	MirrorTreeConvert(root.leftChild);
+	MirrorTreeConvert(root.rightChild);
+	}
+
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -41,6 +54,10 @@ public class MirrorTree {
 		mr.mirror(root);
 
 		mr.preorder(root);
+		System.out.println("\n");
+		mr.MirrorTreeConvert(root);
+		mr.preorder(root);
+
 	}
 
 }

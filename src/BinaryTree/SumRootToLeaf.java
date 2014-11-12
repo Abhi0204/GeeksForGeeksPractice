@@ -2,22 +2,19 @@ package BinaryTree;
 
 public class SumRootToLeaf {
 
-	
-	public boolean checkSum(Node node,int number,int sum )
+	public boolean SumRooToLeaf(Node root,int total)
 	{
-		if(node==null)
+		if(root==null)
 			return false;
-	  
-		sum=sum+node.data;
+	if(root.leftChild==null && root.rightChild==null)
+	{
+		if(total-root.data==0)
+			return true;
+		return false;
+	}
 		
-		if(sum==number)
-			return true; 
-		
-	
-		boolean flag=checkSum(node.leftChild, number, sum);
-		if(flag==false)
-			return checkSum(node.rightChild, number, sum);
-		return true;
+	return	SumRooToLeaf(root.leftChild, total-root.data)
+		|| SumRooToLeaf(root.rightChild, total-root.data);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -31,9 +28,10 @@ public class SumRootToLeaf {
 		root.rightChild.leftChild.rightChild = new Node(9);
 		root.rightChild.leftChild.leftChild = new Node(7);
 		root.rightChild.rightChild = new Node(8);
-		
+
 		SumRootToLeaf check=new SumRootToLeaf();
-		System.out.println(check.checkSum(root,14,0));
+		
+		System.out.println(check.SumRooToLeaf(root,14));
 	}
 
 }

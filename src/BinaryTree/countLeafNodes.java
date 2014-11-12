@@ -5,19 +5,14 @@ public class countLeafNodes {
 
 	public int countLeaf(Node root)
 	{
+		if(root==null)
+			return 0;
 		if(root.leftChild==null && root.rightChild==null)
 		return 1;
 		return countLeaf(root.leftChild)+countLeaf(root.rightChild);
 	}
 	
-	public int recurseCountLeaf(Node root)
-	{
-		if(root==null)
-			return 0;
-		else if(root.leftChild==null && root.rightChild==null)
-			return 1;
-		return (recurseCountLeaf(root.leftChild)+recurseCountLeaf(root.rightChild));
-	}
+	
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -35,7 +30,7 @@ public class countLeafNodes {
 		countleaf.countLeaf(root);
 
 		
-		System.out.println("Count is "+countleaf.recurseCountLeaf(root));
+		System.out.println("Count is "+countleaf.countLeaf(root));
 	}
 
 }

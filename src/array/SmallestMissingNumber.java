@@ -41,7 +41,7 @@ public class SmallestMissingNumber {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int[] arr={0,1,2,3};
+		int[] arr={0,1,3,3};
 		SmallestMissingNumber small=new SmallestMissingNumber();
 		System.out.println(small.findSmallestElementMissing(arr));
 		System.out.println(small.findSmallestElement(arr,5));

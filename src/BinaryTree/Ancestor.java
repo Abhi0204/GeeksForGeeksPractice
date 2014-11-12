@@ -2,30 +2,21 @@ package BinaryTree;
 
 public class Ancestor {
  
-	public boolean findAncestor(Node node,String path,int key)
+	public void getAncestors(Node root,String path,int number)
 	{
-		
-		if(node==null)
-			return false;
-		
-		
-		if(node.data==key)
-		{
-			System.out.println("Ancestors are "+path);
-			return true;
-		}
-		
-		else
-		{
-			
-		path=path+node.data+" ";
-		boolean flag= findAncestor(node.leftChild,path, key);
-		if(flag==false)
-		return findAncestor(node.rightChild,path, key);
+	if(root==null)
+	return;
 
-		}
-		return true;
+	if(root.data==number){
+	System.out.println(path);
+	return;
 	}
+
+	getAncestors(root.leftChild,path+" "+root.data,number);
+	getAncestors(root.rightChild,path+" "+root.data,number);
+	}
+
+
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -40,7 +31,7 @@ public class Ancestor {
 		root.rightChild.rightChild=new Node(8);
 		
 		Ancestor and=new Ancestor();
-		System.out.println(and.findAncestor(root,"",9));
+		and.getAncestors(root,"",4);
 	}
 
 }

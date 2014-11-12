@@ -17,6 +17,18 @@ public class RootToLeafPath {
 		}
 	}
 
+	public void findRootToLEafPath(Node root,String path)
+	{
+	if(root==null){
+	return;
+	}
+
+	if(root.leftChild==null && root.rightChild==null)
+		System.out.println(path+" "+root.data);
+	findRootToLEafPath(root.leftChild,path+" "+root.data);
+	findRootToLEafPath(root.rightChild,path+" "+root.data);
+
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Node root = new Node(1);
@@ -31,7 +43,8 @@ public class RootToLeafPath {
 
 		RootToLeafPath rtl = new RootToLeafPath();
 		rtl.RootToLeafPath(root, "");
-
+System.out.println("\n");
+rtl.findRootToLEafPath(root,"");
 	}
 
 }

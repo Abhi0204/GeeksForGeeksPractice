@@ -9,11 +9,23 @@ public class DoubleTree {
 		Node temp=root.leftChild;
 		root.leftChild=node;
 		node.leftChild=temp;
-		
+
 		getDoubleTree(root.leftChild.leftChild);
 		getDoubleTree(root.rightChild);
 	}
-	
+	public void doubleTree(Node node)
+	{
+		if(node==null)
+			return;
+
+		Node newNode=new Node(node.data);
+		Node temp=node.leftChild;
+		node.leftChild=newNode;
+		newNode.leftChild=temp;
+
+		doubleTree(temp);
+		doubleTree(node.rightChild);
+	}
 	public void inorder(Node root)
 	{
 		if(root==null)
@@ -30,16 +42,20 @@ public class DoubleTree {
 		root.leftChild.rightChild=new Node(4);
 		root.rightChild=new Node(5);
 		root.rightChild.leftChild=new Node(6);
-		
+
 		DoubleTree db=new DoubleTree();
-		
+
 		db.inorder(root);
 		System.out.println("\n");
 		db.getDoubleTree(root);
 		db.inorder(root);
 		
-		
-		
+		System.out.println("\n");
+		db.doubleTree(root);
+		db.inorder(root);
+
+
+
 	}
 
 }

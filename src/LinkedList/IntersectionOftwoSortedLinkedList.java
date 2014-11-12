@@ -63,7 +63,7 @@ public class IntersectionOftwoSortedLinkedList {
 			current1=current1.next;
 			current2=current2.next;
 		}
-		
+		System.out.println(result);
 	}
 	
 	public static void main(String[] args) {
@@ -114,7 +114,7 @@ public class IntersectionOftwoSortedLinkedList {
 		traverseList(head1);
 		
 		System.out.println("\n");
-instersection(head, head1);
+          instersection(head, head1);
 		
 		
 		

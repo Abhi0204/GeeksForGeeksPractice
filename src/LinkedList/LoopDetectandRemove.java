@@ -93,6 +93,32 @@ public class LoopDetectandRemove {
 		}
 		
 	}
+	
+	public void findBeginningoFaLoop(Node node)
+	{
+		Node slow_pointer=node;
+		Node fast_pointer=node;
+	
+		
+		while(slow_pointer!=null && fast_pointer!=null)
+		{
+			slow_pointer=slow_pointer.next;
+			fast_pointer=fast_pointer.next.next;
+			
+			if(slow_pointer==fast_pointer)
+				break;
+		}
+		
+	slow_pointer=head;
+	while(slow_pointer!=fast_pointer)
+	{
+		slow_pointer=slow_pointer.next;
+		fast_pointer=fast_pointer.next;
+	}
+	
+	System.out.println(fast_pointer.data);
+		
+	}
 
 	
 	public static void main(String[] args) {
@@ -121,9 +147,9 @@ public class LoopDetectandRemove {
 		sum.InsertatEnd(n3);
 
 		
-		sum.findALoop(head);
-		
-		traverseLinkedList(head);
+		//sum.findALoop(head);
+		sum.findBeginningoFaLoop(head);
+	//	traverseLinkedList(head);
 
 	}
 

@@ -17,46 +17,37 @@ public class FloorCeil {
 		int low=0;
 		int high=arr.length-1;
 		int middle=0;
-		int floor=0;
-		int ceil=0;
 		
 		
 		while(low<=high)
 		{
 			middle=(low+high)/2;
-			if(Integer.parseInt(arr[middle])==line)
+			
+			if(Integer.parseInt(arr[middle])>line&&Integer.parseInt(arr[middle-1])<line)
 			{
-				floor=Integer.parseInt(arr[middle-1]);
-				ceil=Integer.parseInt(arr[middle+1]);
-				break;
+
+				System.out.println("Floor value= "+arr[middle-1]);
+				System.out.println("Ceil Value=" +arr[middle]);
+				return;
 			}
 			
-			else if(line<Integer.parseInt(arr[middle]))
+			else if(Integer.parseInt(arr[middle])<line&&Integer.parseInt(arr[middle-1])>line)
 			{
-				if(Integer.parseInt(arr[middle-1])<line)
-				{
-					floor=Integer.parseInt(arr[middle-1]);
-					ceil=Integer.parseInt(arr[middle	]);
-					break;
-				}
-				else
-					high=middle-1;
+
+				System.out.println("Floor value= "+arr[middle]);
+				System.out.println("Ceil Value=" +arr[middle-1]);
+				return;
 			}
-			else if(line>Integer.parseInt(arr[middle]))
+			
+			else if(Integer.parseInt(arr[middle])>line)
 			{
-				if(Integer.parseInt(arr[middle+1])>line)
-				{
-					floor=Integer.parseInt(arr[middle]);
-					ceil=Integer.parseInt(arr[middle+1]);
-					break;
-				}
-				else
-					low=middle+1;
+				high=middle-1;
 			}
+			else
+				low=middle+1;
+				
 		}
 		
-		System.out.println("Floor value= "+floor);
-		System.out.println("Ceil Value=" +ceil);
 	}
 
 }

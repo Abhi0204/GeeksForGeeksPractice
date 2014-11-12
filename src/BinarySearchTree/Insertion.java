@@ -2,26 +2,21 @@ package BinarySearchTree;
 
 import BinarySearchTree.Node;
 
-public class Insertion {
-
-	public static Node root=null;
-	
+public class Insertion {	
 	
 	public Node insertBSt(Node root,Node node)
 	{
 		if(root==null)
 		{
-			node.leftChild=null;
-		    node.rightChild=null;
-            return node;
+			root=node;
+			return node;
 		}
+		if(root.data>node.data)
+		  root.leftChild=insertBSt(root.leftChild, node);
+		else
+			root.rightChild=insertBSt(root.rightChild, node);	
 		
-		if(node.data>root.data)
-			root.rightChild=insertBSt(root.rightChild,node);
-		else if(node.data<root.data)
-			root.leftChild=insertBSt(root.leftChild,node);
-			
-            return root;
+		return root;
 		
 	}
 	
@@ -49,7 +44,7 @@ public class Insertion {
 		
 		Insertion insert=new Insertion();
 	
-		root=first;
+		Node root=first;
 		insert.insertBSt(root,second);
 
 		insert.insertBSt(root,third);

@@ -21,66 +21,11 @@ public class PAirwieseSwap {
 
 	}
 
-	public static Node pairWiseSwap(Node node) {
-	/*
-		 head=node.next;
-		Node current=node.next;
-		Node prev=node;
-		
-		while(current!=null)
-		{
-			Node temp=current.next;
-			current.next=prev;
-			
-			
-			
-			if(temp==null ||temp.next==null)
-				
-			{
-				prev.next=temp;
-				break;
-			}
-			prev.next=temp.next;
-			prev=temp;
-			current=temp.next;
-		}*/
-		
-		
-		if(node==null)
-			return node;
-		Node newHead=null;
-		Node prev=null;
-		Node temp=null;
-		Node current=node;
-		Node next=null;
-		while(current!=null)
-		{
-			
-			temp=current.next;
-			if(prev==null)
-				newHead=temp;
-			
-			next=temp.next;
-			current.next=next;
-			
-			if(prev!=null)
-				prev.next=temp;
-			
-				temp.next=current;
-				prev=current;
-				current=prev.next;
-			
-		}
-		
-		return newHead;
-
-	}
-	
 	public static void moveLastToFirst(Node node)
 	{
 		Node first=node;
 		Node current=node;
-		
+
 		while(current.next!=null)
 		{
 			if(current.next.next==null)
@@ -91,14 +36,14 @@ public class PAirwieseSwap {
 				first.next=null;
 				first=last;
 				first.next=temp;
-				
+
 				head=first;
 			}
-			
+
 			current=current.next;
 		}
 	}
-	
+
 	public static void traverseList(Node head) {
 		Node current = head;
 
@@ -108,6 +53,38 @@ public class PAirwieseSwap {
 		}
 	}
 
+	public static Node pairWise(Node head)
+	{
+		Node current=head;
+		Node prev=null;
+		Node newHead=null;
+		while(current!=null)
+		{
+			Node temp=current.next;
+			if(temp!=null)
+			{
+				Node tempNext=temp.next;
+				temp.next=current;
+				current.next=tempNext;
+				if(prev==null)
+					newHead=temp;
+				else
+					prev.next=temp;
+
+				prev=current;
+
+				current=tempNext;
+			}
+			else{
+
+				prev.next=current;
+				current=temp;
+			}
+
+		}
+
+		return newHead;
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
@@ -123,12 +100,12 @@ public class PAirwieseSwap {
 		InsertatEnd(n2);
 		InsertatEnd(n3);
 		InsertatEnd(n4);
-		InsertatEnd(n5);
+		//InsertatEnd(n5);
 		traverseList(head);
 		System.out.println("\n");
 
-		//pairWiseSwap(head);
-		traverseList(pairWiseSwap(head));
+		Node tt=pairWise(head);
+		traverseList(tt);
 
 	}
 

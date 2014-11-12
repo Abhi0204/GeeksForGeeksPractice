@@ -26,14 +26,13 @@ public static Node root=null;
 	{
 		if(root==null)
 			return false;
+		
 		if(root.data==key)
 			return true;
 		if(root.data>key)
 			return searchNode(root.leftChild, key);
-		else if(root.data<key)
-			return searchNode(root.rightChild,key);
-			
-		return false;
+		else
+			return searchNode(root.rightChild, key);
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -57,7 +56,7 @@ public static Node root=null;
 		insert.insertBSt(root,sixth);
 		insert.insertBSt(root,seventh);
 		
-		System.out.println(insert.searchNode(root,80));
+		System.out.println(insert.searchNode(root,810));
 	}
 
 }
